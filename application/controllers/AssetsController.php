@@ -5,33 +5,33 @@ class AssetsController extends Zend_Controller_Action
 
     public function init()
     {
-        // $AssetsModel = new Application_Model_Asset();
+        $this->AssetsModel = new Application_Model_Asset();
     }
 
     // List
     public function indexAction()
     {
-  //       $this->view->rowset = $this->AssetsModel->fetchAll(null,'ID');
-		// $this->view->headers = array(
-		// 	'ID', 
-		// 	'Serie',
-		// 	'BP Usuario',
-		// 	'Ticket',
-		// 	'Hostname',
-		// 	'Username',
-		// 	'Fabricante',
-		// 	'Producto',
-		// 	'Version',
-		// 	'Key app',
-		// 	'Inicio licencia',
-		// 	'Fin licencia',
-		// 	'OC-HES',
-		// 	'Fecha autorización',
-		// 	'Fecha instalación',
-		// 	'Estatus',
-		// 	'Observaciones'
-		// );
-		// $this->view->table = $this->view->render('generic/lista.phtml');
+        $this->view->rowset = $this->AssetsModel->fetchAll(null,'ID');
+		$this->view->headers = array(
+			'ID', 
+			'Serie',
+			'BP Usuario',
+			'Ticket',
+			'Hostname',
+			'Username',
+			'Fabricante',
+			'Producto',
+			'Version',
+			'Key app',
+			'Inicio licencia',
+			'Fin licencia',
+			'OC-HES',
+			'Fecha autorización',
+			'Fecha instalación',
+			'Estatus',
+			'Observaciones'
+		);
+		$this->view->table = $this->view->render('generic/list.phtml');
     }
 
     // Agregar
