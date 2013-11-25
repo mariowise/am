@@ -1,0 +1,91 @@
+<style type="text/css">
+	.generic_table_static {
+		text-align: center;
+		width: 80px;
+	}
+	.generic_table_static i {
+		margin-left: 22.5px;
+	}
+	@media (max-width: 979px) {
+		table {
+			margin-top: 45px;
+		}
+		table, thead, tbody, th, td, tr { 
+			display: block;
+		}
+		thead tr { 
+			display: none;
+		}
+		tr {
+			margin-bottom: 30px;
+			border-top: 1px solid #ddd;
+		}
+		td { 
+			border: none!important;
+			position: relative;
+			padding-left: 50%;
+		}
+		td:before { 
+			content: attr(name) ": ";
+			font-weight: bold;
+			white-space: nowrap;
+		}
+		td[name="MODIFICAR"], td[name="ELIMINAR"] {
+			display: inline;
+		}
+		td[name="MODIFICAR"]:before, td[name="ELIMINAR"]:before {
+			content: "";
+		}
+	}
+
+</style>
+
+<?php
+	if(isset($this->rowset)):
+		if(count($this->rowset) > 0):
+			$data = $this->rowset->toArray();
+			$headers = array_keys($data[0]);
+			$extras = $this->extras;
+?>
+			<div class="container">
+				<table id="generic_table" class="table table-striped">
+					<thead>
+						<tr>
+							<?php foreach((isset($this->headers)) ? $this->headers: $headers as $header):?>
+								<th><?php echo $header;?></th>
+							<?php endforeach;?>
+							<?php if(isset($this->extras)) : foreach($extras as $extra):?>
+								<th><?php echo $extra['title'];?></th>
+							<?php endforeach; endif;?>
+							<th class="generic_table_static">Modificar</th>
+							<th class="generic_table_static">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php foreach($data as $chunk):?>
+							<tr>
+								<?php $i = 0; foreach($headers as $header):?>
+									<td name="<?php echo $this->headers[$i];?>"><?php echo $chunk[$header];?></td>
+								<?php $i++; endforeach;?>
+								<?php if(isset($this->extras)) : $i = 0; foreach($extras as $extra):?>
+									<td name="<?php echo array_keys($extras)[$i];?>" id="<?php echo $chunk[($headers[0])];?>"><a href="#"><?php echo $extra['content'];?></a></td>
+								<?php $i++; endforeach; endif;?>
+								<td class="generic_table_static" name="MODIFICAR"><a href="editar/id/<?php echo $chunk[$headers[0]];?>" tablebtn="editar"><i class="icon-pencil"></i></a></td>
+								<td class="generic_table_static" name="ELIMINAR"><a href="eliminar/id/<?php echo $chunk[$headers[0]];?>" tablebtn="eliminar"><i class="icon-remove"></i></a></td>
+							</tr>
+						<?php endforeach;?>
+					</tbody>
+				</table>
+			</div>
+
+<?php else:?>
+			<div class="container">
+				<div class="table-notfound">No hay registros que mostrar.</div>
+			</div>
+		<?php endif;
+	else:?>
+		<div class="container">
+			<div class="table-notfound">No hay registros que mostrar.</div>
+		</div>
+	<?php endif;
+?>
