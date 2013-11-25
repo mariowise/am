@@ -16,7 +16,37 @@
         <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     </head>
     <body>
+        <div id="page" class="container">
+            <div class="header">
+                <div class="menu menu-main">
+                    
+                </div><!-- .menu -->
+            </div>
+            
+            <div class="row-fluid">
+                <div class="span4 offset4">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <span>Iniciar Sesión</span>
+                        </div>
+                        <div class="panel-body">
+                            <form method="post" action="/signup" class="clearfix unstyled">
+                                <input type="text" class="input-block-level" placeholder="Nombre de usuario" name="Nombre de usuario">
+                                <input type="password"class="input-block-level" placeholder="Password" name="password">
+                                <input type="submit" class="btn btn-success pull-right" value="Login">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <?php echo $this->layout()->content;?>
+            <div>
+                <?php echo $this->layout()->content;?>
+            </div>
+
+            <div class="footer">
+                Accenture, 2013.
+            </div>
+        </div>
     </body>
 </html>
