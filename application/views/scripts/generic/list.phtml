@@ -68,7 +68,10 @@
 									<td name="<?php echo $this->headers[$i];?>"><?php echo $chunk[$header];?></td>
 								<?php $i++; endforeach;?>
 								<?php if(isset($this->extras)) : $i = 0; foreach($extras as $extra):?>
-									<td name="<?php echo array_keys($extras)[$i];?>" id="<?php echo $chunk[($headers[0])];?>"><a href="#"><?php echo $extra['content'];?></a></td>
+								<?php
+									$temp = array_keys($extras);
+								?>
+									<td name="<?php echo $temp[$i];?>" id="<?php echo $chunk[($headers[0])];?>"><a href="#"><?php echo $extra['content'];?></a></td>
 								<?php $i++; endforeach; endif;?>
 								<td class="generic_table_static" name="MODIFICAR"><a href="editar/id/<?php echo $chunk[$headers[0]];?>" tablebtn="editar"><i class="icon-pencil"></i></a></td>
 								<td class="generic_table_static" name="ELIMINAR"><a href="eliminar/id/<?php echo $chunk[$headers[0]];?>" tablebtn="eliminar"><i class="icon-remove"></i></a></td>

@@ -2,33 +2,37 @@
 
 <?php $errors = $this->form->getMessages();?>
 
-<form id="<?php echo $this->form->getName();?>" method="<?php echo $this->form->getMethod();?>" action="<?php echo $this->url();?>">
-	<table>
-		<tbody>
-			<?php foreach(array_keys($this->form->getElements()) as $element):?>
-				<tr>
-					<th><span class="label pull-right" style="margin-bottom: 10px"><?php echo $this->form->labels[$element];?></span></th>
-					<td><?php echo $this->form->getElement($element);?></td>
-					<?php if(isset($errors[$element])):?>
-						<td>
-							<?php foreach($errors[$element] as $error):?>
-								<div class="error" style="width: 300px"><i class="faicon-remove" style="color: red"></i> <?php echo $error;?></div>
-							<?php endforeach;?>
-						</td>
-					<?php endif;?>
-					<?php if(!isset($errors[$element]) && count($errors) > 0):?>
-						<td><div class="error"><i class="faicon-ok" style="color: green"></i></div></td>
-					<?php endif;?>
-				</tr>
-			<?php endforeach;?>
-			<tr>
-				<td colspan="2">
-					<input class="btn pull-right" type="submit" name="addedit" value="<?php echo $this->form_submitValue;?>">
-					<a class="btn btn-link pull-right" action="form_backLink" href="<?php echo $this->form_backLink;?>">Volver</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<form class="form-horizontal" id="<?php echo $this->form->getName();?>" method="<?php echo $this->form->getMethod();?>" action="<?php echo $this->url();?>">
+    <?php foreach(array_keys($this->form->getElements()) as $element):?>
+        <div class="form-col">
+            <div class="control-group">
+                <label class="control-label" for="inputEmail"><?php echo $this->form->labels[$element];?></label>
+                <div class="controls">
+                    <?php echo $this->form->getElement($element);?>
+
+                    <?php if(isset($errors[$element])):?>
+                        <td>
+                            <?php foreach($errors[$element] as $error):?>
+                                <div class="error" style="width: 300px"><i class="faicon-remove" style="color: red"></i> <?php echo $error;?></div>
+                            <?php endforeach;?>
+                        </td>
+                    <?php endif;?>
+                    <?php if(!isset($errors[$element]) && count($errors) > 0):?>
+                        <td><div class="error"><i class="faicon-ok" style="color: green"></i></div></td>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    <?php endforeach;?>
+    <div class="form-col">
+        <div class="control-group">
+            <div class="controls">
+                
+                <input class="btn btn-success" type="submit" name="addedit" value="<?php echo $this->form_submitValue;?>">
+                <a class="btn btn" action="form_backLink" href="<?php echo $this->form_backLink;?>">Volver</a>
+            </div>
+        </div>
+    </div>
 </form>
 
 <?php endif;?>

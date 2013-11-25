@@ -1,53 +1,53 @@
 //
-// Utilities
+// Mixins
 // --------------------------------------------------
 
 
-#sicBox {
+// #sicBox {
     
-    // Example: #sicBox > .inners(40px, 5px);
-    .spacers (@type, @max, @step) {
+//     // Example: #sicBox > .inners(40px, 5px);
+//     .spacers (@type, @max, @step) {
         
-        .spacerX (@size) when (@size > 0) {
-            .spacerX(@size - @step);
-            @index: unit(@size);
-            (~".@{type}-@{index}") { .spacer(@size); }
-            //.@{type}-@{index} { .spacer(@size); }
-        }
-        .spacerX (@size) {}
+//         .spacerX (@size) when (@size > 0) {
+//             .spacerX(@size - @step);
+//             @index: unit(@size);
+//             (~".@{type}-@{index}") { .spacer(@size); }
+//             .@{type}-@{index} { .spacer(@size); }
+//         }
+//         .spacerX (@size) {}
     
-        .spacer (@size) when (@type = "inner"){
-            padding: @size;
-        }
-        .spacer (@size) when (@type = "inner-horizontal"){
-            padding-left: @size !important;
-            padding-right: @size !important;
-        }
-        .spacer (@size) when (@type = "inner-vertical"){
-            padding-top: @size;
-            padding-bottom: @size;
-        }
+//         .spacer (@size) when (@type = "inner"){
+//             padding: @size;
+//         }
+//         .spacer (@size) when (@type = "inner-horizontal"){
+//             padding-left: @size !important;
+//             padding-right: @size !important;
+//         }
+//         .spacer (@size) when (@type = "inner-vertical"){
+//             padding-top: @size;
+//             padding-bottom: @size;
+//         }
         
-        .spacer (@size) when (@type = "outer"){
-            margin: @size;
-        }
-        .spacer (@size) when (@type = "outer-horizontal"){
-            margin-left: @size;
-            margin-right: @size;
-        }
-        .spacer (@size) when (@type = "outer-vertical"){
-            margin-top: @size;
-            margin-bottom: @size;
-        }
+//         .spacer (@size) when (@type = "outer"){
+//             margin: @size;
+//         }
+//         .spacer (@size) when (@type = "outer-horizontal"){
+//             margin-left: @size;
+//             margin-right: @size;
+//         }
+//         .spacer (@size) when (@type = "outer-vertical"){
+//             margin-top: @size;
+//             margin-bottom: @size;
+//         }
         
-        .spacer (@size) when (@type = "spacer"){
-            height: @size;
-        }
-        .spacer (@size) when (@type = "spacerh"){
-            width: @size;
-        }
+//         .spacer (@size) when (@type = "spacer"){
+//             height: @size;
+//         }
+//         .spacer (@size) when (@type = "spacerh"){
+//             width: @size;
+//         }
         
-        // generate .spacerX
-        .spacerX (@max);
-    }
-}
+//         // generate .spacerX
+//         .spacerX (@max);
+//     }
+// }
